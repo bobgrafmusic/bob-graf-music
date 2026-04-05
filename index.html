@@ -306,60 +306,53 @@ transition: transform 6s ease;
     text-transform: uppercase; color: var(--white-faint); margin-top: 1rem;
   }
 
-  /* ── RECORDINGS ── */
-  #recordings { background: var(--mid); }
-  .rec-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 2rem; }
-  .rec-card {
-    background: var(--dark); border: 1px solid rgba(200,16,46,0.15);
-    overflow: hidden; transition: border-color 0.3s, transform 0.3s;
-    display: flex; flex-direction: column;
-  }
-  .rec-card:hover { border-color: rgba(200,16,46,0.5); transform: translateY(-3px); }
-  .rec-top {
-    position: relative; aspect-ratio: 16/9; background: #0d0d0d;
-    overflow: hidden; display: flex; align-items: center; justify-content: center;
-  }
-  .rec-top img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
-    filter: grayscale(100%) contrast(1.15) brightness(0.6); transition: transform 0.5s;
-  }
-  .rec-card:hover .rec-top img { transform: scale(1.05); }
-  .rec-top::after {
-    content: ''; position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(10,10,10,0.7) 0%, transparent 50%);
-  }
-  .rec-placeholder {
-    font-family: 'Playfair Display', serif; font-size: 3.5rem;
-    color: var(--red-dim); font-style: italic; opacity: 0.45;
-  }
-  .rec-body { padding: 1.4rem 1.5rem 1.8rem; }
-  .rec-title {
-    font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700;
-    color: var(--white); margin-bottom: 0.25rem;
-  }
-  .rec-meta {
-    font-family: 'Barlow Condensed', sans-serif; font-size: 0.58rem; font-weight: 300;
-    letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 0.9rem;
-  }
-  .rec-desc {
-    font-size: 0.95rem; font-style: italic; line-height: 1.65;
-    color: var(--white-dim); margin-bottom: 1.3rem;
-  }
-  .btn-red {
-    display: inline-block; font-family: 'Barlow Condensed', sans-serif;
-    font-size: 0.62rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase;
-    color: var(--white); background: var(--red); padding: 0.7rem 1.5rem;
-    text-decoration: none; transition: background 0.25s;
-  }
-  .btn-red:hover { background: #e8132f; }
-  .btn-ghost {
-    display: inline-block; font-family: 'Barlow Condensed', sans-serif;
-    font-size: 0.62rem; font-weight: 400; letter-spacing: 0.25em; text-transform: uppercase;
-    color: var(--red); border: 1px solid var(--red-dim); padding: 0.7rem 1.5rem;
-    text-decoration: none; transition: border-color 0.25s, color 0.25s;
-  }
-  .btn-ghost:hover { border-color: var(--red); color: #ff3355; }
+  <!-- RECORDINGS -->
+<section id="recordings">
+  <div class="sec-label">Discography</div>
+  <h2 class="sec-title">The <em>Recordings</em></h2>
+  <div class="rec-grid">
 
+    <!-- WESTMINSTER (FOR SALE) -->
+    <div class="rec-card">
+      <div class="rec-top">
+        <img src="bob-graf-westminster.jpg" alt="Bob Graf at Westminster">
+      </div>
+      <div class="rec-body">
+        <div class="rec-title">Bob Graf at Westminster</div>
+        <div class="rec-meta">St. Louis Recording · Available on CD</div>
+        <p class="rec-desc">A Westminster release featuring Bob Graf’s St. Louis jazz work. This is the only known recording currently available for purchase.</p>
+        <a href="https://www.ebay.com/itm/127789873670" class="btn-red" target="_blank">Buy on eBay</a>
+      </div>
+    </div>
+
+    <!-- CHET BAKER -->
+    <div class="rec-card">
+      <div class="rec-top">
+        <img src="chet-baker.jpg" alt="Chet Baker Big Band">
+      </div>
+      <div class="rec-body">
+        <div class="rec-title">Chet Baker Big Band</div>
+        <div class="rec-meta">Pacific Jazz · 1956</div>
+        <p class="rec-desc">Bob Graf performed with Chet Baker’s big band during the Pacific Jazz era.</p>
+        <a href="PASTE-YOUTUBE-LINK-HERE" class="btn-ghost" target="_blank">Listen on YouTube</a>
+      </div>
+    </div>
+
+    <!-- WOODY HERMAN -->
+    <div class="rec-card">
+      <div class="rec-top">
+        <img src="woody-herman.jpg" alt="Woody Herman Orchestra">
+      </div>
+      <div class="rec-body">
+        <div class="rec-title">Woody Herman Orchestra</div>
+        <div class="rec-meta">Capitol Records</div>
+        <p class="rec-desc">Bob Graf was associated with Woody Herman’s orchestra during his career.</p>
+        <a href="PASTE-YOUTUBE-LINK-HERE" class="btn-ghost" target="_blank">Listen on YouTube</a>
+      </div>
+    </div>
+
+  </div>
+</section>
   /* ── CONTACT ── */
   #contact { background: var(--black); text-align: center; }
   .contact-rule {
