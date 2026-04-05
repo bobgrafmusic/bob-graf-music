@@ -385,6 +385,47 @@ transition: transform 6s ease;
     .g-item.feature { grid-column: span 2; aspect-ratio: 16/9; min-height: unset; }
     footer { padding: 2.5rem 6rem; }
   }
+  .rec-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.rec-card {
+  background: #111;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.rec-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.rec-content {
+  padding: 18px;
+}
+
+.rec-content h3 {
+  margin-bottom: 8px;
+}
+
+.rec-meta {
+  font-size: 13px;
+  color: #aaa;
+  margin-bottom: 10px;
+}
+
+.rec-btn {
+  display: inline-block;
+  padding: 8px 14px;
+  background: #c9a34a;
+  color: #000;
+  text-decoration: none;
+  border-radius: 4px;
+}
 </style>
 </head>
 <body>
@@ -508,46 +549,70 @@ transition: transform 6s ease;
 </section>
 
 <!-- RECORDINGS -->
+<!-- RECORDINGS -->
 <section id="recordings">
   <div class="sec-label">Discography</div>
   <h2 class="sec-title">The <em>Recordings</em></h2>
+
   <div class="rec-grid">
 
+    <!-- WESTMINSTER -->
     <div class="rec-card">
-      <div class="rec-top">
-        <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SSX17bJFq3Exwtn1BnhngHdwb3PyPHyzRDQanrUh9IccRery0RqqYC6BH51rxmPRSOtWQBgufBI4m_wglWzOXh3yGl1gJxKT80WCLKTaJQNXLrRlJXfSC_5qUPpqR_RHNzaoyPwYud2OQVKQOpqAY1kq9Ek0eSs7ZcwhXcI=w1280" alt="Westminster Recording" onerror="this.style.display='none'">
-      </div>
-      <div class="rec-body">
-        <div class="rec-title">Westminster Recording</div>
-        <div class="rec-meta">Vinyl LP &nbsp;·&nbsp; Now on CD</div>
-        <p class="rec-desc">A landmark document of Bob's St. Louis jazz work — his signature soft-toned tenor, captured for posterity. Now available on CD.</p>
-        <a href="https://www.ebay.com/itm/127789873670" class="btn-red" target="_blank" rel="noopener">Buy on eBay</a>
+      <img src="bob-graf-westminster.jpg" alt="Bob Graf at Westminster">
+
+      <div class="rec-content">
+        <h3>Bob Graf at Westminster</h3>
+        <div class="rec-meta">St. Louis Recording · Available on CD</div>
+
+        <p>
+          A Westminster release featuring Bob Graf’s St. Louis jazz work.
+          This is the only known recording currently available for purchase.
+        </p>
+
+        <a href="https://www.ebay.com/itm/127789873670" target="_blank" class="rec-btn">
+          Buy on eBay
+        </a>
       </div>
     </div>
 
+    <!-- CHET BAKER -->
     <div class="rec-card">
-      <div class="rec-top"><span class="rec-placeholder">♪</span></div>
-      <div class="rec-body">
-        <div class="rec-title">You Go to My Head</div>
-        <div class="rec-meta">With Bev Kelly &nbsp;·&nbsp; Vinyl LP</div>
-        <p class="rec-desc">A sought-after recording with vocalist Bev Kelly. If you own a copy or know where to find one, we'd love to hear from you.</p>
-        <a href="/cdn-cgi/l/email-protection#71331e13360310173c0402181231161c10181d5f121e1c" class="btn-ghost">I Have a Copy</a>
+      <img src="chet-baker.jpg" alt="Chet Baker Big Band">
+
+      <div class="rec-content">
+        <h3>Chet Baker Big Band</h3>
+        <div class="rec-meta">Pacific Jazz Records · 1956</div>
+
+        <p>
+          Bob Graf appeared as a tenor saxophonist in Chet Baker’s big band recordings.
+        </p>
+
+        <a href="https://www.youtube.com/watch?v=Njs1ePNtDQQ" target="_blank" class="rec-btn">
+          Listen on YouTube
+        </a>
       </div>
     </div>
 
+    <!-- WOODY HERMAN -->
     <div class="rec-card">
-      <div class="rec-top"><span class="rec-placeholder" style="font-size:2.5rem;opacity:0.3;">?</span></div>
-      <div class="rec-body">
-        <div class="rec-title">The Big Beat</div>
-        <div class="rec-meta">Film Soundtrack &nbsp;·&nbsp; Universal, 1958</div>
-        <p class="rec-desc">Bob appeared on this Hollywood set in 1958. We're searching for any audio featuring him. Do you know this film?</p>
-        <a href="/cdn-cgi/l/email-protection#80c2efe2c7f2e1e6cdf5f3e9e3c0e7ede1e9ecaee3efed" class="btn-ghost">Share What You Know</a>
+      <img src="woody-herman.jpg" alt="Woody Herman Orchestra">
+
+      <div class="rec-content">
+        <h3>Woody Herman Orchestra</h3>
+        <div class="rec-meta">Capitol Records</div>
+
+        <p>
+          Bob Graf was associated with Woody Herman’s orchestra during his career.
+        </p>
+
+        <a href="https://www.youtube.com/watch?v=I7gtVamJBpU" target="_blank" class="rec-btn">
+          Listen on YouTube
+        </a>
       </div>
     </div>
 
   </div>
 </section>
-
 <!-- CONTACT -->
 <section id="contact">
   <div class="contact-rule"></div>
