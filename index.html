@@ -53,10 +53,13 @@
   .hero-photo { position: absolute; inset: 0; z-index: 0; }
   .hero-photo img {
     width: 100%; height: 100%;
-    object-fit: cover;
-    object-position: 60% 30%;
+    object-fit: contain;
+    object-position: center center;
+    background: #0a0a0a;
     display: block;
-    filter: grayscale(100%) brightness(0.48) contrast(1.2);
+    filter: grayscale(100%) brightness(0.45) contrast(1.2);
+    transform: scale(1.05);
+    transition: transform 6s ease;
   }
   .hero-photo::after {
     content: ''; position: absolute; inset: 0;
@@ -68,6 +71,8 @@
         rgba(10,10,10,0.98) 100%),
       radial-gradient(ellipse at 50% 50%, var(--red-glow) 0%, transparent 70%);
   }
+  #hero:hover .hero-photo img { transform: scale(1.1); }
+
   .hero-content {
     position: relative; z-index: 2;
     display: flex; flex-direction: column; justify-content: flex-end;
