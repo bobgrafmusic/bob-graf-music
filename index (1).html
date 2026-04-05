@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bob Graf Music — St. Louis Jazz Tenor Saxophonist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Barlow+Condensed:wght@200;300;400;500&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red:        #c8102e;
+    --red-dim:    #8a0b20;
+    --red-glow:   rgba(200,16,46,0.22);
+    --white:      #f5f0e8;
+    --white-dim:  #c0b8a8;
+    --white-faint:#6a6258;
+    --black:      #0a0a0a;
+    --dark:       #111111;
+    --mid:        #1a1a1a;
+    --panel:      #141414;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Playfair Display', Georgia, serif;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 800;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 2rem;
+    background: rgba(10,10,10,0.97);
+    border-bottom: 1px solid rgba(200,16,46,0.2);
+  }
+  .nav-logo { font-family: 'Special Elite', cursive; font-size: 1.2rem; color: var(--white); text-decoration: none; letter-spacing: 0.05em; }
+  .nav-logo span { color: var(--red); }
+  .nav-links { display: flex; gap: 1.6rem; list-style: none; }
+  .nav-links a { font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white-dim); text-decoration: none; transition: color 0.25s; }
+  .nav-links a:hover { color: var(--red); }
+  @media (max-width: 600px) { .nav-links { display: none; } }
+
+  /* HERO */
+  #hero {
+    position: relative; width: 100%; min-height: 100vh;
+    background: var(--black); display: flex; flex-direction: column; overflow: hidden;
+  }
+  .hero-photo { position: absolute; inset: 0; z-index: 0; }
+  .hero-photo img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    filter: grayscale(100%) brightness(0.48) contrast(1.2);
+  }
+  .hero-photo::after {
+    content: ''; position: absolute; inset: 0;
+    background:
+      linear-gradient(to bottom,
+        rgba(10,10,10,0.4) 0%,
+        rgba(10,10,10,0.1) 35%,
+        rgba(10,10,10,0.8) 70%,
+        rgba(10,10,10,0.98) 100%),
+      radial-gradient(ellipse at 50% 50%, var(--red-glow) 0%, transparent 70%);
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    min-height: 100vh; padding: 7rem 2rem 3.5rem;
+    animation: fadeUp 1.4s ease forwards; opacity: 0;
+  }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+
+  .hero-tag { font-family: 'Barlow Condensed', sans-serif; font-size: 0.68rem; font-weight: 400; letter-spacing: 0.4em; text-transform: uppercase; color: var(--red); display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.2rem; }
+  .hero-tag::before { content: ''; display: block; width: 28px; height: 2px; background: var(--red); }
+  .hero-name { font-family: 'Playfair Display', serif; font-weight: 900; line-height: 0.88; letter-spacing: -0.02em; font-size: clamp(5rem, 22vw, 9rem); color: var(--white); text-shadow: 0 2px 40px rgba(0,0,0,0.9); }
+  .hero-name .first { display: block; }
+  .hero-name .last  { display: block; color: var(--red); font-style: italic; }
+  .hero-rule { width: 80px; height: 2px; background: linear-gradient(to right, var(--red), transparent); margin: 1.4rem 0 1rem; }
+  .hero-descriptor { font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; font-weight: 300; letter-spacing: 0.28em; text-transform: uppercase; color: var(--white-dim); margin-bottom: 0.4rem; }
+  .hero-dates { font-family: 'Barlow Condensed', sans-serif; font-size: 0.65rem; font-weight: 200; letter-spacing: 0.22em; color: var(--white-faint); text-transform: uppercase; }
+
+  .scroll-cue { position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%); z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 0.4rem; animation: bounce 2s infinite; }
+  .scroll-cue span { font-family: 'Barlow Condensed', sans-serif; font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--white-faint); }
+  .scroll-cue::after { content: '↓'; color: var(--red); font-size: 1rem; }
+  @keyframes bounce { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(6px); } }
+
+  /* QUOTE */
+  #quote-band { background: var(--red); padding: 3rem 2rem; position: relative; overflow: hidden; }
+  #quote-band::before { content: '\201C'; position: absolute; left: 1rem; top: -2.5rem; font-family: 'Playfair Display', serif; font-size: 14rem; font-weight: 900; color: rgba(0,0,0,0.15); line-height: 1; pointer-events: none; }
+  .quote-text { font-family: 'Playfair Display', serif; font-size: clamp(1.1rem, 4vw, 1.8rem); font-style: italic; font-weight: 400; color: var(--white); line-height: 1.55; position: relative; z-index: 1; }
+  .quote-attr { font-family: 'Barlow Condensed', sans-serif; font-size: 0.62rem; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(245,240,232,0.75); margin-top: 1rem; }
+
+  /* SHARED */
+  section { padding: 4.5rem 2rem; }
+  .sec-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.6rem; font-weight: 400; letter-spacing: 0.38em; text-transform: uppercase; color: var(--red); margin-bottom: 0.7rem; display: flex; align-items: center; gap: 0.7rem; }
+  .sec-label::after { content: ''; display: block; width: 30px; height: 1px; background: var(--red-dim); }
+  .sec-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 7vw, 3.2rem); font-weight: 700; line-height: 1.1; color: var(--white); margin-bottom: 2rem; }
+  .sec-title em { font-style: italic; color: var(--red); }
+
+  /* ABOUT */
+  #about { background: var(--dark); }
+  .about-photo-wrap { position: relative; margin-bottom: 2rem; }
+  .about-photo { width: 100%; display: block; filter: grayscale(100%) contrast(1.1) brightness(0.75); }
+  .about-photo-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, var(--red-glow) 0%, transparent 60%); mix-blend-mode: screen; pointer-events: none; }
+  .photo-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.58rem; font-weight: 300; letter-spacing: 0.18em; text-transform: uppercase; color: var(--white-faint); margin-top: 0.5rem; }
+  .about-text p { font-size: 1.05rem; font-weight: 400; line-height: 1.8; color: var(--white-dim); margin-bottom: 1.3rem; }
+  .about-text strong { color: var(--white); font-weight: 700; }
+  .callout { border-left: 3px solid var(--red); padding: 1.4rem 1.5rem; background: var(--mid); margin-top: 1.5rem; }
+  .callout-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.57rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--red); margin-bottom: 0.6rem; }
+  .callout p { font-size: 0.95rem; font-style: italic; color: var(--white-dim); line-height: 1.7; }
+
+  /* TIMELINE — always visible, no hidden state */
+  #timeline { background: var(--panel); }
+  .tl-track { margin-top: 2.5rem; padding-left: 2.2rem; position: relative; }
+  .tl-track::before { content: ''; position: absolute; left: 0; top: 0.5rem; bottom: 0.5rem; width: 2px; background: linear-gradient(to bottom, var(--red), var(--red-dim) 75%, transparent); }
+  .tl-item { position: relative; margin-bottom: 2.5rem; opacity: 1; transform: none; }
+  .tl-dot { position: absolute; left: -2.6rem; top: 0.4rem; width: 10px; height: 10px; border-radius: 50%; background: var(--red); border: 2px solid var(--panel); box-shadow: 0 0 0 2px var(--red-dim); }
+  .tl-year { font-family: 'Barlow Condensed', sans-serif; font-size: 0.65rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--red); margin-bottom: 0.3rem; }
+  .tl-text { font-size: 1rem; font-weight: 400; line-height: 1.72; color: var(--white-dim); }
+  .tl-text strong { color: var(--white); font-weight: 700; }
+
+  /* GALLERY */
+  #gallery { background: var(--dark); }
+  .gallery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-top: 2rem; }
+  .g-item { position: relative; overflow: hidden; cursor: zoom-in; height: 220px; }
+  .g-item.feature { grid-column: span 2; height: 260px; }
+  .g-item img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(100%) contrast(1.15) brightness(0.68); transition: filter 0.4s, transform 0.5s; }
+  .g-item:hover img { filter: grayscale(70%) contrast(1.1) brightness(0.85); transform: scale(1.04); }
+  .g-item::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,10,10,0.9) 0%, transparent 50%); pointer-events: none; z-index: 1; }
+  .g-item::before { content: ''; position: absolute; inset: 0; background: var(--red-glow); opacity: 0; transition: opacity 0.4s; z-index: 2; mix-blend-mode: screen; pointer-events: none; }
+  .g-item:hover::before { opacity: 1; }
+  .g-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 0.8rem 0.9rem; z-index: 3; font-family: 'Barlow Condensed', sans-serif; font-size: 0.58rem; font-weight: 300; letter-spacing: 0.15em; text-transform: uppercase; color: var(--white-dim); }
+  .hint { font-family: 'Barlow Condensed', sans-serif; font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--white-faint); margin-top: 1rem; }
+
+  /* RECORDINGS */
+  #recordings { background: var(--mid); }
+  .rec-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 2rem; }
+  .rec-card { background: var(--dark); border: 1px solid rgba(200,16,46,0.15); overflow: hidden; transition: border-color 0.3s, transform 0.3s; }
+  .rec-card:hover { border-color: rgba(200,16,46,0.5); transform: translateY(-3px); }
+  .rec-card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; filter: brightness(0.85); transition: transform 0.5s; }
+  .rec-card:hover img { transform: scale(1.03); }
+  .rec-body { padding: 1.4rem 1.5rem 1.8rem; }
+  .rec-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--white); margin-bottom: 0.25rem; }
+  .rec-meta { font-family: 'Barlow Condensed', sans-serif; font-size: 0.6rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 0.9rem; }
+  .rec-desc { font-size: 0.95rem; font-style: italic; line-height: 1.65; color: var(--white-dim); margin-bottom: 1.3rem; }
+  .btn-red { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-size: 0.62rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--white); background: var(--red); padding: 0.7rem 1.5rem; text-decoration: none; transition: background 0.25s; }
+  .btn-red:hover { background: #e8132f; }
+  .btn-ghost { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-size: 0.62rem; font-weight: 400; letter-spacing: 0.25em; text-transform: uppercase; color: var(--red); border: 1px solid var(--red-dim); padding: 0.7rem 1.5rem; text-decoration: none; transition: border-color 0.25s, color 0.25s; }
+  .btn-ghost:hover { border-color: var(--red); color: #ff6680; }
+
+  /* CONTACT */
+  #contact { background: var(--black); text-align: center; }
+  .contact-rule { width: 100%; height: 1px; margin-bottom: 4rem; background: linear-gradient(to right, transparent, var(--red-dim), transparent); }
+  .contact-inner { max-width: 500px; margin: 0 auto; }
+  .contact-inner .sec-label { justify-content: center; }
+  .contact-inner .sec-label::after { display: none; }
+  .contact-body { font-size: 1rem; font-style: italic; line-height: 1.8; color: var(--white-dim); margin-bottom: 2rem; }
+  .email-link { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase; color: var(--red); text-decoration: none; border-bottom: 1px solid var(--red-dim); padding-bottom: 0.15rem; transition: color 0.25s, border-color 0.25s; }
+  .email-link:hover { color: #ff6680; border-color: var(--red); }
+  .ornament { margin-top: 3rem; font-family: 'Barlow Condensed', sans-serif; font-size: 0.5rem; letter-spacing: 0.55em; color: var(--red-dim); }
+
+  /* FOOTER */
+  footer { background: var(--black); border-top: 1px solid rgba(200,16,46,0.12); padding: 2rem; text-align: center; }
+  .foot-logo { font-family: 'Special Elite', cursive; font-size: 1rem; color: var(--white-faint); margin-bottom: 0.4rem; }
+  .foot-logo span { color: var(--red); }
+  .foot-text { font-family: 'Barlow Condensed', sans-serif; font-size: 0.55rem; font-weight: 300; letter-spacing: 0.18em; text-transform: uppercase; color: var(--white-faint); }
+
+  /* LIGHTBOX */
+  #lightbox { display: none; position: fixed; inset: 0; background: rgba(10,10,10,0.97); z-index: 9000; align-items: center; justify-content: center; flex-direction: column; gap: 1rem; }
+  #lightbox.open { display: flex; }
+  #lightbox img { max-width: 92vw; max-height: 78vh; object-fit: contain; filter: grayscale(100%) contrast(1.1) brightness(0.88); }
+  #lb-cap { font-family: 'Barlow Condensed', sans-serif; font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--white-faint); padding: 0 1rem; text-align: center; }
+  #lb-close { position: absolute; top: 1.5rem; right: 1.5rem; font-family: 'Barlow Condensed', sans-serif; font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--red); background: none; border: none; cursor: pointer; }
+
+  /* DESKTOP */
+  @media (min-width: 768px) {
+    section { padding: 6rem 4rem; }
+    #quote-band { padding: 3.5rem 4rem; }
+    .about-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4rem; align-items: start; }
+    .about-photo-wrap { margin-bottom: 0; }
+    .rec-grid { grid-template-columns: repeat(3, 1fr); }
+    .rec-card img { aspect-ratio: 1; }
+    footer { display: flex; justify-content: space-between; align-items: center; padding: 2rem 4rem; text-align: left; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .g-item { height: 320px; }
+  }
+  @media (min-width: 1024px) {
+    section { padding: 7rem 6rem; }
+    #quote-band { padding: 3.5rem 6rem; }
+    nav { padding: 1.2rem 4rem; }
+    footer { padding: 2.5rem 6rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav id="mainNav">
+  <a href="#hero" class="nav-logo">Bob <span>Graf</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#timeline">Timeline</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#recordings">Recordings</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-photo">
+    <img src="bob-clear.JPG" alt="Bob Graf playing saxophone">
+  </div>
+  <div class="hero-content">
+    <div class="hero-tag">St. Louis Jazz</div>
+    <h1 class="hero-name">
+      <span class="first">Bob</span>
+      <span class="last">Graf</span>
+    </h1>
+    <div class="hero-rule"></div>
+    <div class="hero-descriptor">Tenor Saxophonist &nbsp;·&nbsp; St. Louis, Missouri</div>
+    <div class="hero-dates">April 16, 1927 &nbsp;–&nbsp; August 27, 1981</div>
+  </div>
+  <div class="scroll-cue"><span>Scroll</span></div>
+</section>
+
+<!-- QUOTE -->
+<div id="quote-band">
+  <blockquote class="quote-text">
+    "Discover music! It's great when you participate and create music. It's never too early, it's never too late. There's an instrument for everyone. Learning is easy. Playing is fun."
+  </blockquote>
+  <div class="quote-attr">— Bob Graf</div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="sec-label">His Story</div>
+  <h2 class="sec-title">A Voice in the<br><em>St. Louis Jazz Scene</em></h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p><strong>Bob Graf</strong> was a gifted, soft-toned tenor saxophonist who spent his life immersed in the jazz world of St. Louis, Missouri. Well-known throughout the city's vibrant jazz circles, he possessed a rare quality of tone that those who heard him never forgot.</p>
+      <p>Though he never fully achieved the national fame his talent deserved, Bob left an indelible mark on everyone he played with. He appeared on recordings, performed on Hollywood film sets, and embodied jazz as a living, participatory art form.</p>
+      <p>He died on <strong>August 27, 1981</strong>, far too young at 52. This site is a tribute built by his daughter Melodi — dedicated to keeping his memory alive and finding those who remember him.</p>
+      <div class="callout">
+        <div class="callout-label">Family Heritage</div>
+        <p>Bob's father Otto abbreviated the family name from <em>Graf von Zeppelin</em> upon arriving in America — their uncle being <strong>Ferdinand Graf von Zeppelin</strong>, inventor of the rigid airship. A lineage of visionaries ran through the Graf blood.</p>
+      </div>
+    </div>
+    <div class="about-photo-wrap">
+      <img class="about-photo" src="bob-hero.JPG" alt="Bob Graf — St. Louis Jazz Tenor Saxophonist">
+      <div class="photo-label">Bob Graf — St. Louis Jazz Tenor Saxophonist</div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <div class="sec-label">Life &amp; Music</div>
+  <h2 class="sec-title">The <em>Timeline</em></h2>
+  <div class="tl-track">
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">1927</div>
+      <div class="tl-text"><strong>Born April 16, 1927</strong> in St. Louis, Missouri. Son of Otto and Emily Graf — German immigrants carrying a storied family name to America.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">1950s</div>
+      <div class="tl-text">Bob establishes himself in the <strong>St. Louis jazz scene</strong>, developing his signature soft-toned tenor sound. He marries Helen Martin and has two sons — <strong>Bob Jr.</strong> and <strong>Kirby</strong>, both musicians. Tragically, Kirby passed away at 21. Bob Jr. still writes and plays in St. Louis today.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">1958</div>
+      <div class="tl-text">Bob plays saxophone <strong>on the Hollywood set</strong> of <em>The Big Beat</em>, starring Gogi Grant and William Reynolds — one of the few documented moments his talent reached a national stage.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">1960s</div>
+      <div class="tl-text">Bob records at <strong>Westminster Recording</strong> — a vinyl LP now available on CD. He also records <em>You Go to My Head</em> with vocalist <strong>Bev Kelly</strong>. If you own a copy, please reach out.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">Later Years</div>
+      <div class="tl-text">Bob finds love again with <strong>Martha (née Hanson)</strong>. Together they have two daughters, Vicki and Melodi. Beyond music, Bob expressed himself through painting and visual art.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">1981</div>
+      <div class="tl-text"><strong>August 27, 1981.</strong> Bob Graf passed away at 52 — far too quietly for a man who deserved the world's attention. The music lives on.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="sec-label">Photographs</div>
+  <h2 class="sec-title">Through the <em>Years</em></h2>
+  <div class="gallery-grid">
+
+    <div class="g-item" onclick="openLB(this)" data-cap="Bob Graf — Early Years">
+      <img src="baby-bob.JPG" alt="Bob Graf as a child">
+      <div class="g-caption">Early Years</div>
+    </div>
+
+    <div class="g-item" onclick="openLB(this)" data-cap="Bob Graf — Young Bob">
+      <img src="young-bob.JPG" alt="Bob Graf as a young man">
+      <div class="g-caption">Young Bob</div>
+    </div>
+
+    <div class="g-item" onclick="openLB(this)" data-cap="Bob Graf — On Set">
+      <img src="dad-on-set.JPG" alt="Bob Graf on set">
+      <div class="g-caption">On Set</div>
+    </div>
+
+    <div class="g-item" onclick="openLB(this)" data-cap="Bob Graf — Dressed for a Night Gig">
+      <img src="red-coat-bob.JPG" alt="Bob Graf dressed for a night gig">
+      <div class="g-caption">Dressed for a Night Gig</div>
+    </div>
+
+  </div>
+  <p class="hint">Tap any photo to enlarge</p>
+</section>
+
+<!-- RECORDINGS -->
+<section id="recordings">
+  <div class="sec-label">Discography</div>
+  <h2 class="sec-title">The <em>Recordings</em></h2>
+  <div class="rec-grid">
+
+    <div class="rec-card">
+      <img src="bob-graf-westminster.jpg" alt="Bob Graf at Westminster">
+      <div class="rec-body">
+        <div class="rec-title">Bob Graf at Westminster</div>
+        <div class="rec-meta">St. Louis Recording &nbsp;·&nbsp; Available on CD</div>
+        <p class="rec-desc">A Westminster release featuring Bob Graf's St. Louis jazz work. The only known recording currently available for purchase.</p>
+        <a href="https://www.ebay.com/itm/127789873670" target="_blank" class="btn-red">Buy on eBay</a>
+      </div>
+    </div>
+
+    <div class="rec-card">
+      <img src="chet-baker.jpg" alt="Chet Baker Big Band">
+      <div class="rec-body">
+        <div class="rec-title">Chet Baker Big Band</div>
+        <div class="rec-meta">Pacific Jazz Records &nbsp;·&nbsp; 1956</div>
+        <p class="rec-desc">Bob Graf performed as a tenor saxophonist alongside Chet Baker during his big band era recordings.</p>
+        <a href="https://www.youtube.com/watch?v=Njs1ePNtDQQ" target="_blank" class="btn-ghost">Listen on YouTube</a>
+      </div>
+    </div>
+
+    <div class="rec-card">
+      <img src="woody-herman.jpg" alt="Woody Herman Orchestra">
+      <div class="rec-body">
+        <div class="rec-title">Woody Herman Orchestra</div>
+        <div class="rec-meta">Capitol Records</div>
+        <p class="rec-desc">Bob Graf was associated with Woody Herman's orchestra during his career as a session and touring musician.</p>
+        <a href="https://www.youtube.com/watch?v=I7gtVamJBpU" target="_blank" class="btn-ghost">Listen on YouTube</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-rule"></div>
+  <div class="contact-inner">
+    <div class="sec-label">Get in Touch</div>
+    <h2 class="sec-title">Did You Know<br><em>Bob Graf?</em></h2>
+    <p class="contact-body">We're gathering memories, photographs, recordings, and stories. If you crossed paths with Bob — at a gig, in the studio, anywhere in St. Louis — we want to hear from you.</p>
+    <a href="/cdn-cgi/l/email-protection#7a3815183d081b1c370f0913193a1d171b131654191517" class="email-link"><span class="__cf_email__" data-cfemail="1e5c717c596c7f78536b6d777d5e79737f7772307d7173">[email&#160;protected]</span></a>
+    <div class="ornament">✦ &nbsp; ✦ &nbsp; ✦</div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-logo">Bob <span>Graf</span> Music</div>
+  <div class="foot-text">A tribute maintained by his family &nbsp;·&nbsp; St. Louis, Missouri &nbsp;·&nbsp; 1927–1981</div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="closeLB()">
+  <button id="lb-close" onclick="closeLB()">✕ Close</button>
+  <img id="lb-img" src="" alt="">
+  <div id="lb-cap"></div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50));
+
+  function openLB(el) {
+    const img = el.querySelector('img');
+    if (!img) return;
+    document.getElementById('lb-img').src = img.src;
+    document.getElementById('lb-cap').textContent = el.dataset.cap || '';
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden'
