@@ -120,7 +120,7 @@
   .callout-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.57rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--red); margin-bottom: 0.6rem; }
   .callout p { font-size: 0.95rem; font-style: italic; color: var(--white-dim); line-height: 1.7; }
 
-  /* TIMELINE — always visible, no hidden state */
+  /* TIMELINE */
   #timeline { background: var(--panel); }
   .tl-track { margin-top: 2.5rem; padding-left: 2.2rem; position: relative; }
   .tl-track::before { content: ''; position: absolute; left: 0; top: 0.5rem; bottom: 0.5rem; width: 2px; background: linear-gradient(to bottom, var(--red), var(--red-dim) 75%, transparent); }
@@ -159,6 +159,63 @@
   .btn-ghost { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-size: 0.62rem; font-weight: 400; letter-spacing: 0.25em; text-transform: uppercase; color: var(--red); border: 1px solid var(--red-dim); padding: 0.7rem 1.5rem; text-decoration: none; transition: border-color 0.25s, color 0.25s; }
   .btn-ghost:hover { border-color: var(--red); color: #ff6680; }
 
+  /* VERIFIED RECORDINGS */
+  #verified-recordings { background: var(--black); }
+  .vr-album { margin-bottom: 3.5rem; border: 1px solid rgba(200,16,46,0.12); background: var(--panel); }
+  .vr-album-header { border-left: 4px solid var(--red); padding: 1.6rem 1.8rem 1.2rem; }
+  .vr-album-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; font-style: italic; color: var(--white); margin-bottom: 0.3rem; }
+  .vr-album-meta { font-family: 'Barlow Condensed', sans-serif; font-size: 0.6rem; font-weight: 300; letter-spacing: 0.22em; text-transform: uppercase; color: var(--red); margin-bottom: 1rem; }
+  .vr-album-desc { font-size: 0.95rem; line-height: 1.75; color: var(--white-dim); font-style: italic; }
+  .vr-personnel { padding: 1.2rem 1.8rem; border-top: 1px solid rgba(200,16,46,0.1); }
+  .vr-sub { font-family: 'Barlow Condensed', sans-serif; font-size: 0.57rem; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: var(--red); margin-bottom: 0.8rem; }
+  .vr-person-list { list-style: none; }
+  .vr-person-list li { font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem; font-weight: 300; letter-spacing: 0.06em; color: var(--white-dim); padding: 0.35rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); display: flex; gap: 0.6rem; align-items: baseline; flex-wrap: wrap; }
+  .vr-person-list li:last-child { border-bottom: none; }
+  .vr-person-name { color: var(--white); font-weight: 400; min-width: 160px; }
+  .vr-person-role { color: var(--white-faint); font-style: italic; }
+  .vr-note { font-family: 'Barlow Condensed', sans-serif; font-size: 0.68rem; font-weight: 300; letter-spacing: 0.1em; color: var(--white-faint); font-style: italic; padding: 0.8rem 1.8rem 1.6rem; }
+  .src-link { font-family: 'Barlow Condensed', sans-serif; font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--red); text-decoration: none; border-bottom: 1px solid var(--red-dim); display: inline-block; margin-top: 0.4rem; transition: color 0.2s, border-color 0.2s; }
+  .src-link:hover { color: #ff6680; border-color: var(--red); }
+
+  /* BIG BEAT */
+  #big-beat { background: var(--dark); }
+  .bb-grid { margin-top: 2rem; }
+  .bb-still-wrap { position: relative; margin-bottom: 2rem; overflow: hidden; cursor: zoom-in; }
+  .bb-still-wrap img { width: 100%; display: block; filter: grayscale(100%) contrast(1.1) brightness(0.72); transition: filter 0.5s; }
+  .bb-still-wrap:hover img { filter: grayscale(80%) contrast(1.05) brightness(0.85); }
+  .bb-still-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.2) 60%, transparent 100%); pointer-events: none; }
+  .bb-still-wrap::before { content: ''; position: absolute; inset: 0; background: var(--red-glow); mix-blend-mode: screen; opacity: 0.4; pointer-events: none; z-index: 1; }
+  .bb-still-label { position: absolute; bottom: 0; left: 0; right: 0; padding: 1rem 1.2rem; z-index: 2; }
+  .bb-still-label-text { font-family: 'Barlow Condensed', sans-serif; font-size: 0.58rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white-faint); }
+  .bb-arrow { display: inline-block; background: var(--red); color: var(--white); font-family: 'Barlow Condensed', sans-serif; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; padding: 0.25rem 0.6rem; margin-top: 0.3rem; }
+  .bb-text p { font-size: 1.05rem; font-weight: 400; line-height: 1.8; color: var(--white-dim); margin-bottom: 1.3rem; }
+  .bb-text strong { color: var(--white); font-weight: 700; }
+  .bb-credits { background: var(--panel); border-left: 3px solid var(--red); padding: 1.4rem 1.6rem; margin-top: 1.5rem; }
+  .bb-credits .callout-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.57rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--red); margin-bottom: 0.8rem; }
+  .bb-credit-row { display: flex; gap: 1rem; font-family: 'Barlow Condensed', sans-serif; font-size: 0.82rem; font-weight: 300; color: var(--white-dim); padding: 0.3rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); flex-wrap: wrap; }
+  .bb-credit-row:last-child { border-bottom: none; }
+  .bb-credit-key { color: var(--white-faint); font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; min-width: 90px; }
+
+  /* SOURCES */
+  #sources { background: var(--panel); }
+  .src-list { margin-top: 2rem; list-style: none; }
+  .src-item { padding: 1.2rem 0; border-bottom: 1px solid rgba(200,16,46,0.1); display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start; }
+  .src-item:last-child { border-bottom: none; }
+  .src-num { font-family: 'Barlow Condensed', sans-serif; font-size: 0.65rem; font-weight: 500; letter-spacing: 0.15em; color: var(--red); min-width: 28px; padding-top: 0.15rem; }
+  .src-title { font-family: 'Playfair Display', serif; font-size: 1rem; font-style: italic; color: var(--white); margin-bottom: 0.2rem; }
+  .src-pub { font-family: 'Barlow Condensed', sans-serif; font-size: 0.62rem; font-weight: 300; letter-spacing: 0.16em; text-transform: uppercase; color: var(--white-faint); margin-bottom: 0.4rem; }
+  .src-note { font-size: 0.9rem; line-height: 1.65; color: var(--white-dim); }
+  .src-img { width: 100%; max-width: 300px; display: block; margin: 0.8rem 0; filter: grayscale(100%) brightness(0.72); border-left: 3px solid var(--red-dim); }
+
+  /* FATHER'S LOVE */
+  #family-photo { background: var(--dark); text-align: center; }
+  .fam-wrap { max-width: 560px; margin: 0 auto; }
+  .fam-photo-wrap { position: relative; overflow: hidden; margin-bottom: 1.4rem; }
+  .fam-photo-wrap img { width: 100%; display: block; filter: grayscale(100%) contrast(1.1) brightness(0.75); }
+  .fam-photo-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, var(--red-glow) 0%, transparent 60%); mix-blend-mode: screen; pointer-events: none; }
+  .fam-caption { font-family: 'Barlow Condensed', sans-serif; font-size: 0.6rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white-faint); margin-bottom: 1rem; }
+  .fam-text { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-style: italic; line-height: 1.8; color: var(--white-dim); }
+
   /* CONTACT */
   #contact { background: var(--black); text-align: center; }
   .contact-rule { width: 100%; height: 1px; margin-bottom: 4rem; background: linear-gradient(to right, transparent, var(--red-dim), transparent); }
@@ -194,6 +251,8 @@
     footer { display: flex; justify-content: space-between; align-items: center; padding: 2rem 4rem; text-align: left; }
     .gallery-grid { grid-template-columns: repeat(2, 1fr); }
     .g-item { height: 320px; }
+    .bb-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: start; }
+    .bb-still-wrap { margin-bottom: 0; }
   }
   @media (min-width: 1024px) {
     section { padding: 7rem 6rem; }
@@ -212,11 +271,14 @@
     <li><a href="#timeline">Timeline</a></li>
     <li><a href="#gallery">Gallery</a></li>
     <li><a href="#recordings">Recordings</a></li>
+    <li><a href="#verified-recordings">Discography</a></li>
+    <li><a href="#big-beat">The Big Beat</a></li>
+    <li><a href="#sources">Sources</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
+<!-- HERO — IDENTICAL TO LIVE -->
 <section id="hero">
   <div class="hero-photo">
     <img src="bob-clear.JPG" alt="Bob Graf playing saxophone">
@@ -263,7 +325,7 @@
   </div>
 </section>
 
-<!-- TIMELINE -->
+<!-- TIMELINE — UPDATED -->
 <section id="timeline">
   <div class="sec-label">Life &amp; Music</div>
   <h2 class="sec-title">The <em>Timeline</em></h2>
@@ -277,20 +339,56 @@
 
     <div class="tl-item">
       <div class="tl-dot"></div>
+      <div class="tl-year">1948</div>
+      <div class="tl-text">Trumpeter <strong>Clark Terry</strong> — a fellow St. Louisan and lifelong friend — recommends the 21-year-old Graf to <strong>Count Basie</strong>. Graf joins Basie's small group in Chicago, one of only two St. Louis musicians in the band.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
       <div class="tl-year">1950s</div>
       <div class="tl-text">Bob establishes himself in the <strong>St. Louis jazz scene</strong>, developing his signature soft-toned tenor sound. He marries Helen Martin and has two sons — <strong>Bob Jr.</strong> and <strong>Kirby</strong>, both musicians. Tragically, Kirby passed away at 21. Bob Jr. still writes and plays in St. Louis today.</div>
     </div>
 
     <div class="tl-item">
       <div class="tl-dot"></div>
+      <div class="tl-year">1950 – 1951</div>
+      <div class="tl-text">Graf records <strong>eight sides for Capitol Records</strong> with Woody Herman's Third Herd in June 1950 — his first documented recordings. Four more sides follow for <strong>MGM Records</strong> in January 1951. He is also a member of <strong>Howard Rumsey's Lighthouse All Stars</strong> at the legendary Lighthouse Café in Hermosa Beach, California.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">1956</div>
+      <div class="tl-text">Graf appears in <strong>Chet Baker's</strong> short-lived big band in October alongside <strong>Bobby Timmons</strong> and <strong>Phil Urso</strong>, recording for <strong>Pacific Jazz Records</strong>.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">Jan 11, 1958</div>
+      <div class="tl-text">Graf records <strong><em>At Westminster</em></strong> — a live concert at Westminster College in St. Louis, produced by <strong>Robert Koester</strong> for his Delmar label. It becomes the first modern jazz record Koester produces for what would become <strong>Delmark Records</strong>. Reissued on CD in 1992 as part of the Underground Heroes series.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
       <div class="tl-year">1958</div>
-      <div class="tl-text">Bob plays saxophone <strong>on the Hollywood set</strong> of <em>The Big Beat</em>, starring Gogi Grant and William Reynolds — one of the few documented moments his talent reached a national stage.</div>
+      <div class="tl-text">Bob plays saxophone <strong>on the Hollywood set</strong> of <em>The Big Beat</em> (Universal Pictures), starring Gogi Grant and William Reynolds. As a member of <strong>AFM Local 2-197</strong>, his union card opened the Hollywood lot. He is visible on screen — middle row, first seat on the right.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">Nov 21, 1959</div>
+      <div class="tl-text">Graf records <strong><em>You Go to My Head</em></strong> live at St. Stephens House in St. Louis with vocalist <strong>Bev Kelly</strong> and the Bob Graf Quartet. The session sits unreleased for over two decades before appearing on <strong>VGM Records</strong> in 1981.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">Dec 1959</div>
+      <div class="tl-text">Graf forms a group with guitarist <strong>Grant Green</strong> and pianist <strong>Sam Lazar</strong> for a week-long stand at the <strong>Holy Barbarian</strong> — a beatnik coffee house at 572 De Baliviere in St. Louis. Green was in his formative years before his landmark Blue Note recordings. <a href="https://www.npr.org/2013/01/11/169130324/grant-green-the-holy-barbarian-of-st-louis-jazz" target="_blank" style="color:var(--red);text-decoration:none;border-bottom:1px solid var(--red-dim);">NPR documented this period in a 2013 profile of Grant Green.</a></div>
     </div>
 
     <div class="tl-item">
       <div class="tl-dot"></div>
       <div class="tl-year">1960s</div>
-      <div class="tl-text">Bob records at <strong>Westminster Recording</strong> — a vinyl LP now available on CD. He also records <em>You Go to My Head</em> with vocalist <strong>Bev Kelly</strong>. If you own a copy, please reach out.</div>
+      <div class="tl-text"><strong>Gerry Mulligan</strong> calls on Graf to perform with his big band. Graf works in a music store through the 1960s and 1970s — repairing instruments and giving impromptu lessons — while never stopping playing.</div>
     </div>
 
     <div class="tl-item">
@@ -302,13 +400,13 @@
     <div class="tl-item">
       <div class="tl-dot"></div>
       <div class="tl-year">1981</div>
-      <div class="tl-text"><strong>August 27, 1981.</strong> Bob Graf passed away at 52 — far too quietly for a man who deserved the world's attention. The music lives on.</div>
+      <div class="tl-text"><strong>August 27, 1981.</strong> Bob Graf passed away at 52 — far too quietly for a man who deserved the world's attention. That same year, <em>You Go to My Head</em> with Bev Kelly was finally released on VGM Records. The music lives on.</div>
     </div>
 
   </div>
 </section>
 
-<!-- GALLERY -->
+<!-- GALLERY — ORIGINAL FILENAMES FROM LIVE CODE -->
 <section id="gallery">
   <div class="sec-label">Photographs</div>
   <h2 class="sec-title">Through the <em>Years</em></h2>
@@ -338,6 +436,11 @@
   <p class="hint">Tap any photo to enlarge</p>
 </section>
 
+<!-- ALL ABOUT JAZZ LINK -->
+<div style="background:var(--black);padding:2.5rem 2rem;text-align:center;">
+  <a href="https://www.allaboutjazz.com/bob-graf-a-st-louis-tenor-voice-the-world-almost-missed" target="_blank" style="font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;font-weight:400;letter-spacing:0.25em;text-transform:uppercase;color:var(--red);text-decoration:none;border-bottom:1px solid var(--red-dim);padding-bottom:0.15rem;">Read Bob's full story on All About Jazz &rarr;</a>
+</div>
+
 <!-- RECORDINGS -->
 <section id="recordings">
   <div class="sec-label">Discography</div>
@@ -348,8 +451,8 @@
       <img src="bob-graf-westminster.jpg" alt="Bob Graf at Westminster">
       <div class="rec-body">
         <div class="rec-title">Bob Graf at Westminster</div>
-        <div class="rec-meta">St. Louis Recording &nbsp;·&nbsp; Available on CD</div>
-        <p class="rec-desc">A Westminster release featuring Bob Graf's St. Louis jazz work. The only known recording currently available for purchase.</p>
+        <div class="rec-meta">Delmark Records &nbsp;·&nbsp; Recorded Jan 11, 1958 &nbsp;·&nbsp; CD Reissue 1992</div>
+        <p class="rec-desc">A landmark live recording at Westminster College, St. Louis — the first modern jazz record produced by Robert Koester for what became Delmark Records. Reissued in 1992 as part of the Underground Heroes series.</p>
         <a href="https://www.ebay.com/itm/127789873670" target="_blank" class="btn-red">Buy on eBay</a>
       </div>
     </div>
@@ -358,8 +461,8 @@
       <img src="chet-baker.jpg" alt="Chet Baker Big Band">
       <div class="rec-body">
         <div class="rec-title">Chet Baker Big Band</div>
-        <div class="rec-meta">Pacific Jazz Records &nbsp;·&nbsp; 1956</div>
-        <p class="rec-desc">Bob Graf performed as a tenor saxophonist alongside Chet Baker during his big band era recordings.</p>
+        <div class="rec-meta">Pacific Jazz Records &nbsp;·&nbsp; October 1956</div>
+        <p class="rec-desc">Graf appeared alongside Bobby Timmons and Phil Urso in Chet Baker's short-lived big band, taking solos on several tunes during this Pacific Jazz session.</p>
         <a href="https://www.youtube.com/watch?v=Njs1ePNtDQQ" target="_blank" class="btn-ghost">Listen on YouTube</a>
       </div>
     </div>
@@ -367,13 +470,238 @@
     <div class="rec-card">
       <img src="woody-herman.jpg" alt="Woody Herman Orchestra">
       <div class="rec-body">
-        <div class="rec-title">Woody Herman Orchestra</div>
-        <div class="rec-meta">Capitol Records</div>
-        <p class="rec-desc">Bob Graf was associated with Woody Herman's orchestra during his career as a session and touring musician.</p>
+        <div class="rec-title">Woody Herman — Third Herd</div>
+        <div class="rec-meta">Capitol Records &nbsp;·&nbsp; June 1950 &nbsp;·&nbsp; MGM Records &nbsp;·&nbsp; January 1951</div>
+        <p class="rec-desc">Graf's first documented recordings — eight sides for Capitol in June 1950, four more for MGM in January 1951, with one of the most forward-thinking big bands of the era.</p>
         <a href="https://www.youtube.com/watch?v=I7gtVamJBpU" target="_blank" class="btn-ghost">Listen on YouTube</a>
       </div>
     </div>
 
+    <div class="rec-card">
+      <img src="bob-graf-sessions.jpg" alt="The Bob Graf Sessions">
+      <div class="rec-body">
+        <div class="rec-title">The Bob Graf Sessions</div>
+        <div class="rec-meta">Delmar Records &nbsp;·&nbsp; Recorded January &amp; February 1958</div>
+        <p class="rec-desc">Two St. Louis sessions from early 1958 — the Westminster College concert and a February date at a Modern Music gathering — the first modern jazz record produced by Robert Koester for what became Delmark Records.</p>
+        <a href="https://www.discogs.com/release/19828105-Bob-Graf-The-Bob-Graf-Sessions" target="_blank" class="btn-ghost">View on Discogs</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- VERIFIED RECORDINGS -->
+<section id="verified-recordings">
+  <div class="sec-label">Full Discography</div>
+  <h2 class="sec-title">Verified <em>Recordings</em></h2>
+
+  <div class="vr-album">
+    <div class="vr-album-header">
+      <div class="vr-album-title">At Westminster</div>
+      <div class="vr-album-meta">Delmar / Delmark Records &nbsp;·&nbsp; Recorded January 11, 1958 &nbsp;·&nbsp; CD Reissue 1992 (DD-401)</div>
+      <div class="vr-album-desc">A live concert at Westminster College in St. Louis, produced by Robert Koester — the first modern jazz record for what became Delmark Records. Liner notes by Len Bukowski note Graf's playing displays Lester Young's lyricism while the strength of his tone shows his grasp of the hard bop style. "Street of Dreams" is singled out as his finest recorded solo.</div>
+    </div>
+    <div class="vr-personnel">
+      <div class="vr-sub">Personnel</div>
+      <ul class="vr-person-list">
+        <li><span class="vr-person-name">Bob Graf</span><span class="vr-person-role">Tenor Saxophone — leader</span></li>
+        <li><span class="vr-person-name">Ron Ruff</span><span class="vr-person-role">Tenor Saxophone &amp; Flute</span></li>
+        <li><span class="vr-person-name">Jimmy Williams</span><span class="vr-person-role">Piano</span></li>
+        <li><span class="vr-person-name">Bob Maisel</span><span class="vr-person-role">Bass &nbsp;·&nbsp; previously with Serge Chaloff &amp; Dick Twardzik; St. Louis Symphony Orchestra</span></li>
+        <li><span class="vr-person-name">Al St. James</span><span class="vr-person-role">Drums &nbsp;·&nbsp; previously played with Charlie Parker in Chicago</span></li>
+      </ul>
+    </div>
+    <div class="vr-note">The concert was originally planned around experimental compositions. When trumpeter Bill Buxton was unable to appear, the group shifted to familiar standards, with Graf featured throughout.</div>
+  </div>
+
+  <div class="vr-album">
+    <div class="vr-album-header">
+      <div class="vr-album-title">The Bob Graf Sessions</div>
+      <div class="vr-album-meta">Delmar Records &nbsp;·&nbsp; Recorded January &amp; February 1958</div>
+      <div class="vr-album-desc">Two St. Louis sessions compiled into one release. Tracks 1–2 are from the Westminster College concert; tracks 3–4 come from a February 1958 recording at a Modern Music gathering with a slightly different lineup. The most complete document of Graf's work as a leader.</div>
+    </div>
+    <div class="vr-personnel">
+      <div class="vr-sub">Personnel — Tracks 1 &amp; 2 (Westminster College, January 1958)</div>
+      <ul class="vr-person-list">
+        <li><span class="vr-person-name">Bob Graf</span><span class="vr-person-role">Tenor Saxophone — leader</span></li>
+        <li><span class="vr-person-name">Ron Ruff</span><span class="vr-person-role">Tenor Saxophone &amp; Flute</span></li>
+        <li><span class="vr-person-name">Jimmy Williams</span><span class="vr-person-role">Piano</span></li>
+        <li><span class="vr-person-name">Bob Maisel</span><span class="vr-person-role">Bass</span></li>
+        <li><span class="vr-person-name">Al St. James</span><span class="vr-person-role">Drums</span></li>
+      </ul>
+    </div>
+    <div class="vr-personnel" style="border-top:1px solid rgba(200,16,46,0.1);">
+      <div class="vr-sub">Personnel — Tracks 3 &amp; 4 (Modern Music, St. Louis, February 1958)</div>
+      <ul class="vr-person-list">
+        <li><span class="vr-person-name">Bob Graf</span><span class="vr-person-role">Tenor Saxophone — leader</span></li>
+        <li><span class="vr-person-name">Jimmy Williams</span><span class="vr-person-role">Piano</span></li>
+        <li><span class="vr-person-name">Johnny Mixon</span><span class="vr-person-role">Bass</span></li>
+        <li><span class="vr-person-name">Al St. James</span><span class="vr-person-role">Drums</span></li>
+      </ul>
+    </div>
+    <div class="vr-note"><a href="https://www.discogs.com/release/19828105-Bob-Graf-The-Bob-Graf-Sessions" target="_blank" class="src-link">Discogs — The Bob Graf Sessions &rarr;</a></div>
+  </div>
+
+  <div class="vr-album">
+    <div class="vr-album-header">
+      <div class="vr-album-title">You Go to My Head</div>
+      <div class="vr-album-meta">VGM Records &nbsp;·&nbsp; VGM 0007 &nbsp;·&nbsp; Recorded November 21, 1959 &nbsp;·&nbsp; Released 1981</div>
+      <div class="vr-album-desc">Recorded live at St. Stephens House in St. Louis with vocalist Bev Kelly and the Bob Graf Quartet. Sat unreleased for over two decades before appearing on VGM Records in 1981 — the same year Graf died. If you own a copy, please reach out.</div>
+    </div>
+    <div class="vr-personnel">
+      <div class="vr-sub">Personnel</div>
+      <ul class="vr-person-list">
+        <li><span class="vr-person-name">Bev Kelly</span><span class="vr-person-role">Vocals</span></li>
+        <li><span class="vr-person-name">Bob Graf</span><span class="vr-person-role">Tenor Saxophone</span></li>
+        <li><span class="vr-person-name">Bob Graf Quartet</span><span class="vr-person-role">Additional personnel — details sought. Please contact us if you were there.</span></li>
+      </ul>
+    </div>
+    <div class="vr-note"><a href="https://www.discogs.com/release/4452606-Bev-Kelly-Bob-Graf-Bob-Graf-Quartet-You-Go-To-My-Head-Bev-Kelly-Sings-With-The-Bob-Graf-Quartet" target="_blank" class="src-link">Discogs — Bev Kelly &amp; Bob Graf Quartet &rarr;</a></div>
+  </div>
+
+  <div class="vr-album">
+    <div class="vr-album-header">
+      <div class="vr-album-title">Chet Baker Big Band</div>
+      <div class="vr-album-meta">Pacific Jazz Records &nbsp;·&nbsp; Recorded October 1956</div>
+      <div class="vr-album-desc">Graf appeared in Chet Baker's short-lived big band, taking solos on several tunes. Baker was among the most celebrated names in jazz at the time, placing Graf within the orbit of the West Coast movement.</div>
+    </div>
+    <div class="vr-personnel">
+      <div class="vr-sub">Notable Personnel</div>
+      <ul class="vr-person-list">
+        <li><span class="vr-person-name">Chet Baker</span><span class="vr-person-role">Trumpet — leader</span></li>
+        <li><span class="vr-person-name">Bob Graf</span><span class="vr-person-role">Tenor Saxophone</span></li>
+        <li><span class="vr-person-name">Bobby Timmons</span><span class="vr-person-role">Piano</span></li>
+        <li><span class="vr-person-name">Phil Urso</span><span class="vr-person-role">Tenor Saxophone</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="vr-album">
+    <div class="vr-album-header">
+      <div class="vr-album-title">Woody Herman's Third Herd</div>
+      <div class="vr-album-meta">Capitol Records &nbsp;·&nbsp; June 1950 &nbsp;&nbsp;/&nbsp;&nbsp; MGM Records &nbsp;·&nbsp; January 1951</div>
+      <div class="vr-album-desc">Graf's first documented studio recordings — eight sides for Capitol in June 1950 and four for MGM in January 1951. His presence in one of the most forward-thinking big bands of the era speaks unmistakably to his abilities.</div>
+    </div>
+    <div class="vr-personnel">
+      <div class="vr-sub">Context</div>
+      <ul class="vr-person-list">
+        <li><span class="vr-person-name">Bob Graf</span><span class="vr-person-role">Tenor Saxophone — sideman</span></li>
+        <li><span class="vr-person-name">Woody Herman</span><span class="vr-person-role">Clarinet, Alto Saxophone — leader</span></li>
+      </ul>
+    </div>
+    <div class="vr-note">These sessions represent Graf's earliest known recordings and his first work with a nationally recognized bandleader.</div>
+  </div>
+
+</section>
+
+<!-- THE BIG BEAT -->
+<section id="big-beat">
+  <div class="sec-label">Film &nbsp;·&nbsp; 1958</div>
+  <h2 class="sec-title">The <em>Big Beat</em></h2>
+  <div class="bb-grid">
+    <div class="bb-still-wrap" onclick="openLB(this)" data-cap="Bob Graf — The Big Beat (Universal Pictures, 1958) · Middle row, first seat on the right">
+      <img src="dad-on-set.JPG" alt="Film still from The Big Beat (1958) featuring Bob Graf">
+      <div class="bb-still-label">
+        <div class="bb-still-label-text">Film still — The Big Beat &nbsp;·&nbsp; Universal Pictures, 1958</div>
+        <div class="bb-arrow">Bob Graf — middle row, first right</div>
+      </div>
+    </div>
+    <div class="bb-text">
+      <p>In 1958, Bob Graf's union card opened a door no amount of talent alone could unlock. As a member of <strong>Local 2-197 of the American Federation of Musicians</strong>, Graf was among the working musicians required by studio contracts to perform live on Hollywood lots.</p>
+      <p>Universal Pictures came calling for <em>The Big Beat</em> — a musical film starring <strong>Gogi Grant</strong> and <strong>William Reynolds</strong>. Graf traveled to Hollywood and appeared on screen as a performing musician. One of the few moments his talent reached anything close to a national stage.</p>
+      <p>Find him exactly where he always was — in the music, present, unhurried. <strong>Middle row. First seat on the right.</strong></p>
+      <div class="bb-credits">
+        <div class="callout-label">Film Credits</div>
+        <div class="bb-credit-row"><span class="bb-credit-key">Title</span><span>The Big Beat</span></div>
+        <div class="bb-credit-row"><span class="bb-credit-key">Year</span><span>1958</span></div>
+        <div class="bb-credit-row"><span class="bb-credit-key">Studio</span><span>Universal Pictures</span></div>
+        <div class="bb-credit-row"><span class="bb-credit-key">Starring</span><span>Gogi Grant, William Reynolds</span></div>
+        <div class="bb-credit-row"><span class="bb-credit-key">Bob Graf</span><span>Performing musician — middle row, first seat on the right</span></div>
+        <div class="bb-credit-row"><span class="bb-credit-key">Union</span><span>AFM Local 2-197, American Federation of Musicians</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOURCES & REFERENCES -->
+<section id="sources">
+  <div class="sec-label">Documentation</div>
+  <h2 class="sec-title">Sources &amp; <em>References</em></h2>
+  <ul class="src-list">
+
+    <li class="src-item">
+      <div class="src-num">01</div>
+      <div class="src-body">
+        <div class="src-title">Grant Green: The 'Holy Barbarian' Of St. Louis Jazz</div>
+        <div class="src-pub">NPR &nbsp;·&nbsp; January 11, 2013</div>
+        <img src="grant-green1.jpg" alt="Grant Green" class="src-img">
+        <div class="src-note">Documents the Holy Barbarian beatnik coffee house scene in St. Louis and Graf's role alongside Grant Green and Sam Lazar in December 1959. The primary published source confirming Graf's presence in the St. Louis jazz world of this period.</div>
+        <a href="https://www.npr.org/2013/01/11/169130324/grant-green-the-holy-barbarian-of-st-louis-jazz" target="_blank" class="src-link">NPR — Grant Green: The Holy Barbarian &rarr;</a>
+      </div>
+    </li>
+
+    <li class="src-item">
+      <div class="src-num">02</div>
+      <div class="src-body">
+        <div class="src-title">Bob Graf — Artist Page &amp; Discography</div>
+        <div class="src-pub">Discogs</div>
+        <img src="discogs.JPG" alt="Bob Graf on Discogs" class="src-img">
+        <div class="src-note">Catalogs Graf's documented recordings including the Woody Herman sessions (Capitol, 1950; MGM, 1951), the Chet Baker Big Band (Pacific Jazz, 1956), At Westminster (Delmar/Delmark, 1958), and You Go to My Head with Bev Kelly (VGM Records, 1981).</div>
+        <a href="https://www.discogs.com/artist/1884305-Bob-Graf" target="_blank" class="src-link">Discogs — Bob Graf Artist Page &rarr;</a>
+      </div>
+    </li>
+
+    <li class="src-item">
+      <div class="src-num">03</div>
+      <div class="src-body">
+        <div class="src-title">At Westminster — Album Page</div>
+        <div class="src-pub">Discogs &nbsp;·&nbsp; Delmark Records DD-401</div>
+        <div class="src-note">Release page confirming label, catalog number, personnel, and recording date.</div>
+        <a href="https://www.discogs.com/release/7492659-Bob-Graf-At-Westminster" target="_blank" class="src-link">Discogs — At Westminster &rarr;</a>
+      </div>
+    </li>
+
+    <li class="src-item">
+      <div class="src-num">04</div>
+      <div class="src-body">
+        <div class="src-title">Bev Kelly, Bob Graf Quartet — You Go to My Head</div>
+        <div class="src-pub">Discogs &nbsp;·&nbsp; VGM Records VGM 0007</div>
+        <div class="src-note">Release page confirming the 1981 VGM Records release of the 1959 St. Stephens House recording session.</div>
+        <a href="https://www.discogs.com/release/4452606-Bev-Kelly-Bob-Graf-Bob-Graf-Quartet-You-Go-To-My-Head-Bev-Kelly-Sings-With-The-Bob-Graf-Quartet" target="_blank" class="src-link">Discogs — Bev Kelly &amp; Bob Graf Quartet &rarr;</a>
+      </div>
+    </li>
+
+    <li class="src-item">
+      <div class="src-num">05</div>
+      <div class="src-body">
+        <div class="src-title">The Bob Graf Sessions</div>
+        <div class="src-pub">Discogs &nbsp;·&nbsp; Delmar Records</div>
+        <div class="src-note">Release page documenting both January and February 1958 St. Louis recording sessions, including full personnel and track details.</div>
+        <a href="https://www.discogs.com/release/19828105-Bob-Graf-The-Bob-Graf-Sessions" target="_blank" class="src-link">Discogs — The Bob Graf Sessions &rarr;</a>
+      </div>
+    </li>
+
+    <li class="src-item">
+      <div class="src-num">06</div>
+      <div class="src-body">
+        <div class="src-title">At Westminster — Liner Notes</div>
+        <div class="src-pub">Len Bukowski &nbsp;·&nbsp; Delmark Records, 1992 reissue</div>
+        <div class="src-note">The primary critical assessment of Graf's recorded work. Documents the concert's history, each musician's background, and Graf's playing style — singling out "Street of Dreams" as his finest recorded solo.</div>
+      </div>
+    </li>
+
+  </ul>
+</section>
+
+<!-- A FATHER'S LOVE -->
+<section id="family-photo">
+  <div class="sec-label" style="justify-content:center;">A Father's Love</div>
+  <div class="fam-wrap">
+    <div class="fam-photo-wrap">
+      <img src="dad-melodi.JPG" alt="Bob Graf with his daughters">
+    </div>
+    <div class="fam-caption">Bob Graf with his daughters &nbsp;·&nbsp; St. Louis</div>
+    <p class="fam-text">Beyond the music, beyond the recordings and the clubs and the famous names — this is what mattered most. A father looking at his daughter like she's the whole world.</p>
   </div>
 </section>
 
@@ -384,7 +712,7 @@
     <div class="sec-label">Get in Touch</div>
     <h2 class="sec-title">Did You Know<br><em>Bob Graf?</em></h2>
     <p class="contact-body">We're gathering memories, photographs, recordings, and stories. If you crossed paths with Bob — at a gig, in the studio, anywhere in St. Louis — we want to hear from you.</p>
-    <a href="mailto:BobGrafMusic&#64;gmail&#46;com" class="email-link">BobGrafMusic&#64;gmail&#46;com</a>
+    <a href="mailto:BobGrafMusic@gmail.com" class="email-link">BobGrafMusic@gmail.com</a>
     <div class="ornament">✦ &nbsp; ✦ &nbsp; ✦</div>
   </div>
 </section>
@@ -411,4 +739,15 @@
     document.getElementById('lb-img').src = img.src;
     document.getElementById('lb-cap').textContent = el.dataset.cap || '';
     document.getElementById('lightbox').classList.add('open');
-    document.body.style.overflow = 'hidden'
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLB() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLB(); });
+</script>
+</body>
+</html>
