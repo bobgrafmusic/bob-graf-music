@@ -739,11 +739,44 @@
 <!-- CONTACT -->
 <section id="contact">
   <div class="contact-rule"></div>
-  <div class="contact-inner">
-    <div class="sec-label">Get in Touch</div>
+  <div class="contact-inner" style="max-width:580px;">
+    <div class="sec-label" style="justify-content:center;">Get in Touch</div>
     <h2 class="sec-title">Did You Know<br><em>Bob Graf?</em></h2>
     <p class="contact-body">We're gathering memories, photographs, recordings, and stories. If you crossed paths with Bob — at a gig, in the studio, anywhere in St. Louis — we want to hear from you.</p>
-    <a href="mailto:BobGrafMusic@gmail.com" class="email-link">BobGrafMusic@gmail.com</a>
+
+    <form action="https://formspree.io/f/xjgjokoq" method="POST" style="text-align:left;margin-top:1rem;">
+
+      <label style="font-family:'Barlow Condensed',sans-serif;font-size:0.6rem;font-weight:400;letter-spacing:0.28em;text-transform:uppercase;color:var(--red);display:block;margin-bottom:0.5rem;">Your Name</label>
+      <input type="text" name="name" required style="width:100%;background:var(--mid);border:1px solid rgba(200,16,46,0.25);color:var(--white);font-family:'Playfair Display',serif;font-size:0.95rem;padding:0.75rem 1rem;outline:none;box-sizing:border-box;margin-bottom:1.2rem;">
+
+      <label style="font-family:'Barlow Condensed',sans-serif;font-size:0.6rem;font-weight:400;letter-spacing:0.28em;text-transform:uppercase;color:var(--red);display:block;margin-bottom:0.5rem;">How Did You Know Bob? <span style="color:var(--white-faint);font-size:0.55rem;">Optional</span></label>
+      <select name="connection" style="width:100%;background:var(--mid);border:1px solid rgba(200,16,46,0.25);color:var(--white-dim);font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;letter-spacing:0.1em;padding:0.75rem 1rem;outline:none;box-sizing:border-box;margin-bottom:1.2rem;appearance:none;">
+        <option value="">Select one...</option>
+        <option>Fellow musician</option>
+        <option>Student</option>
+        <option>Friend or family</option>
+        <option>Fan of his music</option>
+        <option>Other</option>
+      </select>
+
+      <label style="font-family:'Barlow Condensed',sans-serif;font-size:0.6rem;font-weight:400;letter-spacing:0.28em;text-transform:uppercase;color:var(--red);display:block;margin-bottom:0.5rem;">Your Memory</label>
+      <textarea name="memory" rows="6" required style="width:100%;background:var(--mid);border:1px solid rgba(200,16,46,0.25);color:var(--white);font-family:'Playfair Display',serif;font-size:0.95rem;padding:0.75rem 1rem;outline:none;box-sizing:border-box;resize:vertical;margin-bottom:1.2rem;" placeholder="Share what you remember — a gig, a moment, a name, a place. Anything helps."></textarea>
+
+      <label style="font-family:'Barlow Condensed',sans-serif;font-size:0.6rem;font-weight:400;letter-spacing:0.28em;text-transform:uppercase;color:var(--red);display:block;margin-bottom:0.5rem;">Email <span style="color:var(--white-faint);font-size:0.55rem;">Optional</span></label>
+      <input type="email" name="email" style="width:100%;background:var(--mid);border:1px solid rgba(200,16,46,0.25);color:var(--white);font-family:'Playfair Display',serif;font-size:0.95rem;padding:0.75rem 1rem;outline:none;box-sizing:border-box;margin-bottom:1.8rem;">
+
+      <input type="hidden" name="_subject" value="New Bob Graf Memory Submission">
+
+      <div style="text-align:center;">
+        <button type="submit" style="font-family:'Barlow Condensed',sans-serif;font-size:0.62rem;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:var(--white);background:var(--red);border:none;padding:0.85rem 2.5rem;cursor:pointer;transition:background 0.25s;">Send Your Memory</button>
+      </div>
+    </form>
+
+    <div style="width:100%;height:1px;background:linear-gradient(to right,transparent,var(--red-dim),transparent);margin:2.5rem 0;"></div>
+    <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--white-faint);text-align:center;margin-bottom:0.8rem;">Prefer to write directly?</div>
+    <div style="text-align:center;">
+      <a href="mailto:BobGrafMusic@gmail.com" class="email-link">BobGrafMusic@gmail.com</a>
+    </div>
     <div class="ornament">✦ &nbsp; ✦ &nbsp; ✦</div>
   </div>
 </section>
