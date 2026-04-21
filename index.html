@@ -274,6 +274,7 @@
 
 <nav id="mainNav">
   <a href="#hero" class="nav-logo">Bob <span>Graf</span></a>
+  <button id="hamburger" aria-label="Open menu" onclick="document.querySelector('.nav-links').classList.toggle('nav-open')">&#9776;</button>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#timeline">Timeline</a></li>
@@ -833,6 +834,51 @@
   }
 
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLB(); });
+</script>
+<style>
+  #hamburger {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 1.6rem;
+    cursor: pointer;
+    padding: 0.4rem 0.8rem;
+    line-height: 1;
+  }
+  @media (max-width: 600px) {
+    #hamburger { display: block; }
+    .nav-links {
+      display: none !important;
+      flex-direction: column !important;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: rgba(10,10,10,0.99);
+      border-top: 1px solid rgba(200,16,46,0.3);
+      padding: 0.5rem 0 1rem;
+      z-index: 799;
+    }
+    .nav-links.nav-open {
+      display: flex !important;
+    }
+    .nav-links li {
+      text-align: center;
+      padding: 0.55rem 0;
+    }
+    .nav-links a {
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+    }
+  }
+</style>
+<script>
+  document.querySelectorAll('.nav-links a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.remove('nav-open');
+    });
+  });
 </script>
 </body>
 </html>
