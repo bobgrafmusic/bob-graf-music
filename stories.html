@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stories — Bob Graf Music Archive</title>
+<meta name="description" content="Stories from the world Bob Graf moved through — musicians, venues, and the living memory of jazz.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Barlow+Condensed:wght@200;300;400;500&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red:        #c8102e;
+    --red-dim:    #8a0b20;
+    --red-glow:   rgba(200,16,46,0.22);
+    --white:      #f5f0e8;
+    --white-dim:  #c0b8a8;
+    --white-faint:#6a6258;
+    --black:      #0a0a0a;
+    --dark:       #111111;
+    --mid:        #1a1a1a;
+    --panel:      #141414;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Playfair Display', Georgia, serif;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 800;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 2rem;
+    background: rgba(10,10,10,0.97);
+    border-bottom: 1px solid rgba(200,16,46,0.2);
+  }
+  .nav-logo { font-family: 'Special Elite', cursive; font-size: 1.2rem; color: var(--white); text-decoration: none; letter-spacing: 0.05em; }
+  .nav-logo span { color: var(--red); }
+  .nav-links { display: flex; gap: 1.6rem; list-style: none; }
+  .nav-links a { font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white-dim); text-decoration: none; transition: color 0.25s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--red); }
+  #hamburger { display: none; background: none; border: none; color: var(--white); font-size: 1.6rem; cursor: pointer; padding: 0.4rem 0.8rem; line-height: 1; }
+  @media (max-width: 600px) {
+    #hamburger { display: block; }
+    .nav-links { display: none !important; flex-direction: column !important; position: absolute; top: 100%; left: 0; right: 0; background: rgba(10,10,10,0.99); border-top: 1px solid rgba(200,16,46,0.3); padding: 0.5rem 0 1rem; z-index: 799; }
+    .nav-links.nav-open { display: flex !important; }
+    .nav-links li { text-align: center; padding: 0.55rem 0; }
+    .nav-links a { font-size: 0.8rem; letter-spacing: 0.18em; }
+  }
+
+  /* PAGE HEADER */
+  .page-header {
+    padding: 9rem 2rem 4rem;
+    background: var(--dark);
+    border-bottom: 1px solid rgba(200,16,46,0.15);
+  }
+  .page-header-inner { max-width: 760px; margin: 0 auto; }
+  .sec-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.6rem; font-weight: 400; letter-spacing: 0.38em; text-transform: uppercase; color: var(--red); margin-bottom: 0.7rem; display: flex; align-items: center; gap: 0.7rem; }
+  .sec-label::after { content: ''; display: block; width: 30px; height: 1px; background: var(--red-dim); }
+  .page-title { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 9vw, 4.5rem); font-weight: 900; line-height: 1; color: var(--white); margin-bottom: 1.2rem; }
+  .page-title em { font-style: italic; color: var(--red); }
+  .page-desc { font-family: 'Barlow Condensed', sans-serif; font-size: 0.78rem; font-weight: 300; letter-spacing: 0.18em; color: var(--white-faint); line-height: 1.7; }
+
+  /* STORY */
+  .story-wrap { max-width: 760px; margin: 0 auto; padding: 4rem 2rem 6rem; }
+
+  .story-hero { position: relative; width: 100%; margin-bottom: 3rem; overflow: hidden; }
+  .story-hero img { width: 100%; display: block; filter: grayscale(100%) contrast(1.15) brightness(0.55); max-height: 520px; object-fit: cover; object-position: center 20%; }
+  .story-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.2) 60%, transparent 100%); pointer-events: none; }
+  .story-hero::before { content: ''; position: absolute; inset: 0; background: var(--red-glow); mix-blend-mode: screen; opacity: 0.5; pointer-events: none; z-index: 1; }
+  .story-hero-caption { position: absolute; bottom: 1rem; left: 1.2rem; z-index: 2; font-family: 'Barlow Condensed', sans-serif; font-size: 0.55rem; font-weight: 300; letter-spacing: 0.18em; text-transform: uppercase; color: var(--white-faint); }
+
+  .story-kicker { font-family: 'Barlow Condensed', sans-serif; font-size: 0.6rem; font-weight: 400; letter-spacing: 0.38em; text-transform: uppercase; color: var(--red); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.7rem; }
+  .story-kicker::after { content: ''; display: block; width: 30px; height: 1px; background: var(--red-dim); }
+
+  .story-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 6vw, 3rem); font-weight: 900; line-height: 1.05; color: var(--white); margin-bottom: 0.6rem; }
+  .story-subtitle { font-family: 'Playfair Display', serif; font-size: clamp(1rem, 3vw, 1.4rem); font-style: italic; font-weight: 400; color: var(--white-dim); margin-bottom: 1.8rem; line-height: 1.4; }
+
+  .story-meta { display: flex; gap: 1.5rem; align-items: center; margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(200,16,46,0.15); flex-wrap: wrap; }
+  .story-byline { font-family: 'Barlow Condensed', sans-serif; font-size: 0.62rem; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white-faint); }
+  .story-byline strong { color: var(--white); }
+  .story-rule { width: 1px; height: 16px; background: rgba(200,16,46,0.3); }
+
+  .story-body { font-size: 1.08rem; font-weight: 400; line-height: 1.9; color: var(--white-dim); }
+  .story-body p { margin-bottom: 1.6rem; }
+  .story-body strong { color: var(--white); font-weight: 700; }
+  .story-body em { font-style: italic; color: var(--white); }
+
+  .story-section-head { font-family: 'Barlow Condensed', sans-serif; font-size: 0.6rem; font-weight: 500; letter-spacing: 0.38em; text-transform: uppercase; color: var(--red); margin: 3rem 0 1.2rem; display: flex; align-items: center; gap: 0.7rem; }
+  .story-section-head::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, var(--red-dim), transparent); }
+
+  .story-pullquote { border-left: 3px solid var(--red); padding: 1.4rem 1.8rem; background: var(--panel); margin: 2.5rem 0; }
+  .story-pullquote p { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-style: italic; line-height: 1.7; color: var(--white); margin: 0; }
+
+  /* SOURCES */
+  .story-sources { margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid rgba(200,16,46,0.15); }
+  .story-sources-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.58rem; font-weight: 500; letter-spacing: 0.32em; text-transform: uppercase; color: var(--red); margin-bottom: 1.2rem; }
+  .story-sources ul { list-style: none; }
+  .story-sources li { font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; font-weight: 300; letter-spacing: 0.08em; color: var(--white-faint); padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); line-height: 1.6; }
+  .story-sources li:last-child { border-bottom: none; }
+  .story-sources a { color: var(--red); text-decoration: none; border-bottom: 1px solid var(--red-dim); transition: color 0.2s; }
+  .story-sources a:hover { color: #ff6680; }
+
+  /* SECOND LINE CTA */
+  .second-line-cta { margin-top: 4rem; padding: 2rem 2.2rem; background: var(--panel); border: 1px solid rgba(200,16,46,0.2); border-left: 4px solid var(--red); display: flex; flex-direction: column; gap: 0.8rem; }
+  .second-line-cta-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.55rem; font-weight: 400; letter-spacing: 0.32em; text-transform: uppercase; color: var(--red); }
+  .second-line-cta-text { font-family: 'Playfair Display', serif; font-size: 1rem; font-style: italic; color: var(--white-dim); line-height: 1.6; }
+  .second-line-cta a { font-family: 'Barlow Condensed', sans-serif; font-size: 0.62rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--white); background: var(--red); padding: 0.65rem 1.5rem; text-decoration: none; display: inline-block; margin-top: 0.4rem; transition: background 0.25s; }
+  .second-line-cta a:hover { background: #e8132f; }
+
+  /* STORY DIVIDER */
+  .story-divider { width: 100%; height: 1px; background: linear-gradient(to right, transparent, var(--red-dim), transparent); margin: 5rem 0; }
+
+  /* FOOTER */
+  footer { background: var(--black); border-top: 1px solid rgba(200,16,46,0.12); padding: 2rem; text-align: center; }
+  .foot-logo { font-family: 'Special Elite', cursive; font-size: 1rem; color: var(--white-faint); margin-bottom: 0.4rem; }
+  .foot-logo span { color: var(--red); }
+  .foot-text { font-family: 'Barlow Condensed', sans-serif; font-size: 0.55rem; font-weight: 300; letter-spacing: 0.18em; text-transform: uppercase; color: var(--white-dim); }
+  .foot-copy { font-family: 'Barlow Condensed', sans-serif; font-size: 0.52rem; font-weight: 300; letter-spacing: 0.14em; color: var(--white-dim); margin-top: 0.8rem; }
+
+  @media (min-width: 768px) {
+    .page-header { padding: 9rem 4rem 4rem; }
+    .story-wrap { padding: 5rem 4rem 8rem; }
+  }
+  @media (min-width: 1024px) {
+    nav { padding: 1.2rem 4rem; }
+    .page-header { padding: 9rem 6rem 4rem; }
+    .story-wrap { padding: 5rem 6rem 8rem; max-width: 900px; margin: 0 auto; }
+  }
+</style>
+</head>
+<body>
+
+<nav id="mainNav">
+  <a href="index.html" class="nav-logo">Bob <span>Graf</span></a>
+  <button id="hamburger" aria-label="Open menu" onclick="document.querySelector('.nav-links').classList.toggle('nav-open')">&#9776;</button>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#timeline">Timeline</a></li>
+    <li><a href="index.html#gallery">Gallery</a></li>
+    <li><a href="index.html#recordings">Recordings</a></li>
+    <li><a href="index.html#verified-recordings">Discography</a></li>
+    <li><a href="index.html#big-beat">The Big Beat</a></li>
+    <li><a href="index.html#sources">Sources</a></li>
+    <li><a href="stories.html" class="active">Stories</a></li>
+    <li><a href="index.html#memories">Memories</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <div style="display:flex;gap:1rem;align-items:center;margin-left:1.5rem;">
+    <a href="https://www.facebook.com/bobgrafmusic/" target="_blank" style="color:#6a6258;transition:color 0.25s;" onmouseover="this.style.color='#c8102e'" onmouseout="this.style.color='#6a6258'" aria-label="Facebook">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    </a>
+    <a href="https://www.linkedin.com/company/bob-graf-music-archive/" target="_blank" style="color:#6a6258;transition:color 0.25s;" onmouseover="this.style.color='#c8102e'" onmouseout="this.style.color='#6a6258'" aria-label="LinkedIn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    </a>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="sec-label">Bob Graf Music Archive</div>
+    <h1 class="page-title">Stories</h1>
+    <p class="page-desc">From the world Bob Graf moved through &nbsp;·&nbsp; Musicians, venues, and the rooms that heard them</p>
+  </div>
+</div>
+
+<!-- STORY ONE -->
+<div class="story-wrap">
+
+  <div class="story-hero">
+    <img src="dad_city_street_40s.webp" alt="Bob Graf, St. Louis, c. 1940s">
+    <div class="story-hero-caption">Bob Graf &nbsp;·&nbsp; St. Louis, c. 1940s</div>
+  </div>
+
+  <div class="story-kicker">St. Louis &nbsp;·&nbsp; December 1959</div>
+  <h2 class="story-title">The Holy Barbarian: Christmas Night, 1959</h2>
+  <p class="story-subtitle">Bob Graf, Grant Green, and the Integrated Jazz Underground of St. Louis</p>
+
+  <div class="story-meta">
+    <div class="story-byline">By <strong>Melodi Graf McCraine</strong></div>
+    <div class="story-rule"></div>
+    <div class="story-byline">Bob Graf Music Archive &nbsp;·&nbsp; 2026</div>
+  </div>
+
+  <div class="story-body">
+
+    <p>In December 1959, a young guitarist named Grant Green had recently returned to St. Louis after recording his first sessions in Chicago. According to a detailed account published by Positive Feedback, Green was at that point working in strip joints on the east side of the city, venues that paid low wages and were run, as that account put it, by owners who treated musicians as easily disposable commodities that could be swapped literally for a song. He was twenty-four years old and had not yet made a single record under his own name. Within fourteen months he would be in Rudy Van Gelder's studio recording for Blue Note Records, on his way to becoming one of the most recorded jazz guitarists in history.</p>
+
+    <p>But first, there was Christmas night at the Holy Barbarian.</p>
+
+    <div class="story-section-head">The Club</div>
+
+    <p>Ollie Matheus had recently opened a small coffeehouse at 572 De Baliviere Avenue in the Skinker-DeBaliviere neighborhood of St. Louis. It was a beatnik hangout in the spirit of the era, named after Lawrence Lipton's 1959 chronicle of bohemian life on the American margins. Chess players occupied the corners. A local artist painted portraits near the stage. A poet named Pete Simpson served as emcee, grabbing the microphone between sets to deliver what listeners described as a send-up of beatnik verse.</p>
+
+    <p>What made the Holy Barbarian unusual, and what made it dangerous in the eyes of St. Louis authorities, was its insistence on integration. The Matheus brothers created a room that challenged St. Louis norms. Black and white musicians shared the stage. Black and white audiences shared the room. In a city where such mingling was actively discouraged, the Holy Barbarian pushed back simply by existing.</p>
+
+    <p>According to later accounts documented in Bob Blumenthal's liner notes for the 2012 album release, the club faced pressure from authorities and did not survive long. But not before someone turned on a tape recorder.</p>
+
+    <div class="story-section-head">The Band</div>
+
+    <p>The group that assembled at the Holy Barbarian that week was led by organist Sam Lazar, a St. Louis native who had recently taken up the Hammond B3 after hearing Jimmy Smith. Lazar had already worked with Green and would go on to record three albums for Chess Records' Argo subsidiary between 1960 and 1962, the first of those sessions featuring Green on guitar, Chauncey Williams on drums, and blues titan Willie Dixon on bass.</p>
+
+    <p>On drums was Chauncey Williams, a local player whose shuffle feel carried the band with what NPR critic Kevin Whitehead later described as a Chicago blues undertow — earthy, relaxed, rhythmically rooted in the American heartland.</p>
+
+    <p>On tenor saxophone was Bob Graf.</p>
+
+    <p>Graf was the oldest member of the group and, as the liner notes to the eventual album release noted, the one with the most formal pedigree. He had played in Count Basie's small group in Chicago in 1950, recommended by trumpeter Clark Terry, who told Basie about a young Caucasian kid named Bob Graf. Basie's response, as Terry recalled in his Smithsonian oral history, was three words: <em>"Get the kid."</em> Graf went on to tour with Woody Herman's Third Herd, recording for Capitol Records in June 1950 and for MGM Records in January 1951. He had recorded with the Chet Baker Big Band for Pacific Jazz in 1956, and led his own quartet backing jazz vocalist Bev Kelly in St. Louis just weeks before the Holy Barbarian sessions.</p>
+
+    <p>He was also, as multiple reviews of the 2012 album release noted, the only white member of the group. At the Holy Barbarian, that was precisely the point. Bob Graf's presence in the band was not incidental. According to the Positive Feedback account of the sessions, his involvement was at the direct insistence of owner Ollie Matheus, who was determined to integrate the band.</p>
+
+    <div class="story-section-head">Christmas Night</div>
+
+    <p>The tape was rolling on December 25, 1959. A second session followed on February 20, 1960. The emcee's voice is audible on the recording, introducing the musicians by name, the crowd in the holiday spirit, the room alive with the casual energy of a local hangout where no one was performing for posterity.</p>
+
+    <div class="story-pullquote">
+      <p>Grant Green was not the leader that night. He was one of the guys in the band. What the recording captures is something rarer than a showcase — four musicians in full flight, playing for a room that was listening, inside a club that was quietly making history.</p>
+    </div>
+
+    <p>The standards they played included "There Will Never Be Another You," "Blue Train," "Groovin' High," and "Out of Nowhere." They also played originals, including a piece called "Holy Barbarian Blues" that named the room and the moment at once.</p>
+
+    <p>Bob Graf plays the melody on "There Will Never Be Another You." His tone is warm and authoritative. JazzWeekly noted that Graf has "that Four Brothers sound" — the high compliment of the era, invoking the legendary Herman saxophone section of Zoot Sims, Stan Getz, Herbie Steward, and Serge Chaloff. NPR's Kevin Whitehead, reviewing the album in January 2013, framed Graf as a player whose national visibility had faded, playing with the authority of someone who had earned every note.</p>
+
+    <div class="story-section-head">What Happened Next</div>
+
+    <p>A few months after the Holy Barbarian sessions, alto saxophonist Lou Donaldson came through St. Louis, heard Grant Green playing a session, and told Alfred Lion at Blue Note Records about him. Green moved to New York. Between 1961 and 1965, he recorded more Blue Note albums as leader and sideman than anyone else on the label. He became one of the most sampled guitarists in jazz history, his music eventually borrowed by A Tribe Called Quest, Kendrick Lamar, Cypress Hill, and Wu-Tang Clan.</p>
+
+    <p>Bob Graf returned to the St. Louis scene. He led a bossa nova quartet at a club called the Fallen Angel in 1963, the last mention of him in the national jazz press for nearly two decades. He repaired instruments for school districts, raised a family, and played local gigs on his own terms. The music never left him. It simply lived in smaller rooms.</p>
+
+    <p>The Holy Barbarian itself closed not long after the recordings were made, a casualty of the same social pressures its existence had quietly defied.</p>
+
+    <div class="story-section-head">The Recording</div>
+
+    <p>For decades the tapes sat dormant. In 2012, Uptown Records released <em>The Holy Barbarian, St. Louis, 1959</em> — a complete document of those sessions with liner notes by jazz critic Bob Blumenthal and photographs from the era. NPR reviewed it in January 2013. Fresh Air covered it the same month. JazzWeekly called it "another great treasure." The album is available on CD and streaming platforms. Graf appears throughout the released sessions.</p>
+
+    <p>The building that housed the Holy Barbarian may or may not still stand. St. Louis has lost many of its mid-century landmarks to demolition and neglect. A site visit is planned to document whatever remains.</p>
+
+    <p>What is certain is that on Christmas night, 1959, something real happened there. Four musicians — one of them a future legend, one of them remembered mostly in fragments, two of them largely unknown to history — played jazz in an integrated room in a city that did not want integrated rooms, and someone had the foresight to press record.</p>
+
+    <p>That tape survived. The music is still there.</p>
+
+    <p>Bob Graf is still there too.</p>
+
+  </div>
+
+  <!-- SOURCES -->
+  <div class="story-sources">
+    <div class="story-sources-label">Sources</div>
+    <ul>
+      <li>Bob Blumenthal, liner notes — <em>The Holy Barbarian St. Louis 1959</em>, Uptown Records, 2012</li>
+      <li>NPR Music / Fresh Air — <a href="https://www.npr.org/2013/01/11/169130324/grant-green-the-holy-barbarian-of-st-louis-jazz" target="_blank">Grant Green: The Holy Barbarian of St. Louis Jazz</a>, January 2013</li>
+      <li>Kevin Whitehead, NPR review transcript, January 2013</li>
+      <li>Clark Terry, Smithsonian Jazz Oral History Program transcript, p. 79</li>
+      <li>Buddy DeFranco, Smithsonian Jazz Oral History Program transcript, p. 46</li>
+      <li>JazzWeekly review — <em>The Holy Barbarian St. Louis 1959</em></li>
+      <li>Positive Feedback — "Grant Green Part II: The Holy Barbarians"</li>
+      <li>JazzWax — interview with Melodi Graf McCraine, May 2026</li>
+    </ul>
+  </div>
+
+  <!-- SECOND LINE CTA -->
+  <div class="second-line-cta">
+    <div class="second-line-cta-label">Second Line</div>
+    <p class="second-line-cta-text">More stories from the musicians, venues, and worlds American music almost forgot.</p>
+    <a href="https://secondline.substack.com" target="_blank">Read on Second Line &rarr;</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="foot-logo">Bob <span>Graf</span> Music</div>
+  <div class="foot-text">The Bob Graf Music Archive &nbsp;·&nbsp; St. Louis, Missouri &nbsp;·&nbsp; 1927–1981</div>
+  <div class="foot-copy">&copy; 2026 Melodi Graf McCraine. All rights reserved.</div>
+</footer>
+
+<script>
+  document.querySelectorAll('.nav-links a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.remove('nav-open');
+    });
+  });
+</script>
+
+</body>
+</html>
